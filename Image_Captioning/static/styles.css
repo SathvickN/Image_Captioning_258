@@ -1,0 +1,157 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a font */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Styling the header */
+.header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Main content container */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.content-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+/* File input and label */
+.upload-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-label {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-label:hover {
+    background-color: #2980b9;
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #28b485;
+    color: #ffffff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #1e906d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 20px;
+    }
+
+    .upload-form {
+        flex-direction: column;
+    }
+
+    .file-label, .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Generated Caption Container */
+.caption-container {
+  background: #ffffff;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: none; /* Initially hidden */
+  text-align: center;
+}
+
+.caption-container h2 {
+  font-size: 1.8em;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.caption-container p {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 0;
+}
+
+/* Style adjustments for buttons to have the same size */
+.file-label,
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Ensure both buttons are visually the same */
+.file-label,
+.submit-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}

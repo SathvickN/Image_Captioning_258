@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Image Caption Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="content-container">
+            <h1>Image Caption Generator</h1>
+            <form id="captionForm" action="/generate-caption" method="POST" enctype="multipart/form-data" class="upload-form">
+                
+                <input type="file" id="imageInput" name="image" accept="image/*" class="file-input" onchange="displayImage()">
+                <label for="imageInput" class="file-label">Choose a file</label>
+                <button type="button" class="submit-btn" onclick="generateCaption()">Generate Caption</button>
+                <label for="modelSelect">Choose a model:</label>
+                <select id="modelSelect" name="model">
+                    <option value="model1">git-based-coco</option>
+                    <option value="model2">blip-large</option>
+                    <!-- Add more models as needed -->
+                </select>
+            
+            </form>
+            
+            
+    <!-- Loading Placeholder -->
+    <div id="loadingPlaceholder" class="loading-placeholder" style="display:none;">
+        <p>Loading...</p>
+        <!-- Optional: Add a spinner image or animation here -->
+    </div>
+    
+    <!-- Container for the uploaded image and generated caption -->
+    <div id="imageContainer" class="image-container" style="display:none;">
+        <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; height: auto;"/>
+        <h2>Generated Caption:</h2>
+        <p id="generatedCaption"></p>
+    </div>
+    </div>
+    </div>
+
+    <script>
+        // This script tag should only contain the function definitions.
+        function displayImage() {
+            const uploadedImage = document.getElementById('uploadedImage');
+            const imageInput = document.getElementById('imageInput');
+            const imageContainer = document.getElementById('imageContainer');
+            const file = imageInput.files[0];
+    
+            if (file) {
+                uploadedImage.src = URL.createObjectURL(file);
+                imageContainer.style.display = 'block';
+            }
+        }
+    
+        function generateCaption() {
+    const form = document.getElementById('captionForm');
+    const formData = new FormData(form);
+    const generatedCaption = document.getElementById('generatedCaption');
+    const loadingPlaceholder = document.getElementById('loadingPlaceholder');
+
+    // Show loading placeholder
+    loadingPlaceholder.style.display = 'block';
+
+    fetch('/generate-caption', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json()) // Expecting a JSON response
+    .then(data => {
+        generatedCaption.textContent = data.caption; // Set caption
+        loadingPlaceholder.style.display = 'none'; // Hide loading placeholder
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        loadingPlaceholder.style.display = 'none'; // Hide loading placeholder even on error
+    });
+}
+
+    </script>
+    
+</body>
+</html>
