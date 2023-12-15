@@ -5,3 +5,5 @@ Steps to run the flask code:
 3) Run python3 main.py
 4) This will create a link in the terminal, by clicking on this link a new tab will open in browswer
 5) You can upload the image and generate caption for that model
+
+The llms-captioning file has the four models which perform image captioning from hugging face website.
